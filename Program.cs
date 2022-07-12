@@ -8,6 +8,8 @@
  * gestire come meglio crediate queste casistiche.
  */
 
+using ListaIndirizzi;
+
 string path = "../../../addresses.csv";
 
 List<Address> addressesList = new List<Address>();
@@ -61,31 +63,17 @@ if (File.Exists(path))
             Console.WriteLine(e.Message);
         }        
     }
+
+    addressesFile.Close();
 }
 else
 {
-    Console.WriteLine("Attenzione non ho trovato nessun file!");
+    Console.WriteLine("Attenzione file non trovato!");
 }
 
 
-
-
-public class Address
+foreach (Address address in addressesList)
 {
-    public string Name { get;   set; }
-    public string Surname { get; private set; }
-    public string Street { get; private set; }
-    public string City { get; private set; }
-    public string Province { get; private set; }
-    public string ZipCode { get; private set; }
-
-    public Address (string name, string surname, string street, string city, string province, string zipCode)
-    {
-        Name = name;
-        Surname = surname;
-        Street = street;
-        City = city;
-        Province = province;
-        ZipCode = zipCode;
-    }
+    Console.WriteLine($"- - Indirizzo - -");
+    address.ToString();
 }
